@@ -60,28 +60,29 @@ def vision():
                 marker_corners = corners[marker_index][0]
 
                 # Resize the screen capture to match the marker size
-                
-                """screen_capture_resized = cv2.resize(screen_capture_rgb, (int(marker_corners[2][0] - marker_corners[0][0]),
-                                                                        int(marker_corners[2][1] - marker_corners[0][1])))
-
-                # Replace the region of interest (ROI) with the resized screen capture
-                
-                frame[int(marker_corners[0][1]):int(marker_corners[2][1]),
-                    int(marker_corners[0][0]):int(marker_corners[2][0])] = screen_capture_resized"""
                     
                 # Double the width and height of the resized image
-                new_width = int(2 * (marker_corners[2][0] - marker_corners[0][0]))
-                new_height = int(2 * (marker_corners[2][1] - marker_corners[0][1]))
-                screen_capture_resized = cv2.resize(screen_capture_rgb, (new_width, new_height))
+                try:
+                    new_width = int(5 * (marker_corners[2][0] - marker_corners[0][0]))
+                    new_height = int(5 * (marker_corners[2][1] - marker_corners[0][1]))
+                    screen_capture_resized = cv2.resize(screen_capture_rgb, (new_width, new_height))
 
-                # Calculate the new coordinates for replacing the region of interest (ROI)
-                new_x1 = int(marker_corners[0][0] - (new_width - (marker_corners[2][0] - marker_corners[0][0])) / 2)
-                new_x2 = new_x1 + new_width
-                new_y1 = int(marker_corners[0][1] - (new_height - (marker_corners[2][1] - marker_corners[0][1])) / 2)
-                new_y2 = new_y1 + new_height
+                    # Calculate the new coordinates for replacing the region of interest (ROI)
+                    new_x1 = int(marker_corners[0][0] - (new_width - (marker_corners[2][0] - marker_corners[0][0])) / 2)
+                    new_x2 = new_x1 + new_width
+                    new_y1 = int(marker_corners[0][1] - (new_height - (marker_corners[2][1] - marker_corners[0][1])) / 2)
+                    new_y2 = new_y1 + new_height
 
                 # Replace the region of interest (ROI) with the resized screen capture
-                frame[new_y1:new_y2, new_x1:new_x2] = screen_capture_resized
+                    frame[new_y1:new_y2, new_x1:new_x2] = screen_capture_resized
+                    """                if new_x1 >= 0 and new_x2 <= frame.shape[1] and new_y1 >= 0 and new_y2 <= frame.shape[0]:
+                    # Resize the screen capture to match the region dimensions
+                    screen_capture_resized = cv2.resize(screen_capture_rgb, (new_width, new_height))
+
+                    # Replace the region of interest (ROI) with the resized screen capture
+                    frame[new_y1:new_y2, new_x1:new_x2] = screen_capture_resized"""
+                except:
+                    pass
 
 
         # Display the frame with the screen capture overlaid on the ArUco marker
