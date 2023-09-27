@@ -15,11 +15,11 @@ def vision():
     aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
 
     # Create a video capture object (0 represents the default camera, change if necessary)
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
 
     # Initialize the MSS (monitor screen capture) object for the second monitor
     sct = mss()
-    mon = sct.monitors[3]
+    mon = sct.monitors[2]
 
     # Define the bounding box for the screen capture
     bounding_box = {

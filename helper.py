@@ -22,8 +22,6 @@ def resize_projection(marker_corners,screen_capture_rgb,frame,scale, arg = "cent
     new_y1 = int(marker_corners[0][1] - (new_height - (marker_corners[2][1] - marker_corners[0][1])) / y_div)
     new_y2 = new_y1 + new_height
     
-    frame[new_y1:new_y2, new_x1:new_x2] = screen_capture_resized
-    
     # Define the dimensions of the frame
     frame_height, frame_width, _ = frame.shape
 
