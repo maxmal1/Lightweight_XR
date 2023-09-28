@@ -19,7 +19,7 @@ def vision():
 
     # Initialize the MSS (monitor screen capture) object for the second monitor
     sct = mss()
-    mon = sct.monitors[2]
+    mon = sct.monitors[3]
 
     # Define the bounding box for the screen capture
     bounding_box = {
@@ -31,8 +31,6 @@ def vision():
 
     cv2.namedWindow('ArUco Marker Screen Capture', cv2.WND_PROP_FULLSCREEN)
     cv2.setWindowProperty('ArUco Marker Screen Capture', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-
-
     while True:
         # Read a frame from the camera
         ret, frame = cap.read()
@@ -56,6 +54,7 @@ def vision():
             # Check if the marker with ID 0 is detected
             if 0 in ids:
                 marker_index = list(ids).index(0)
+                
 
                 # Get the corners of the detected marker
                 marker_corners = corners[marker_index][0]
@@ -65,7 +64,7 @@ def vision():
                 # Double the width and height of the resized image
                 try:
                     
-                    frame = resize_projection(marker_corners,screen_capture_rgb,frame, 2)
+                    frame = resize_projection(marker_corners,screen_capture_rgb,frame, 5)
 
                 except:
                     pass
