@@ -64,7 +64,7 @@ def vision():
                 # Double the width and height of the resized image
                 try:
                     
-                    frame = resize_projection(marker_corners,screen_capture_rgb,frame, 5)
+                    frame = resize_projection(marker_corners,screen_capture_rgb,frame, 5,"bot")
 
                 except:
                     pass
