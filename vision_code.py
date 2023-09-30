@@ -19,7 +19,7 @@ def vision():
 
     # Initialize the MSS (monitor screen capture) object for the second monitor
     sct = mss()
-    mon = sct.monitors[3]
+    mon = sct.monitors[2]
 
     # Define the bounding box for the screen capture
     bounding_box = {
@@ -84,4 +84,4 @@ def vision():
     # Release the camera and close all OpenCV windows
     cap.release()
     cv2.destroyAllWindows()
-    os.system(r'cmd /c "C:\Users\max\Downloads\usbmmidd_v2\usbmmidd_v2\deviceinstaller64 enableidd 0"')
+    os.system(r'cmd /c "plug_in\deviceinstaller64 enableidd 0"')
